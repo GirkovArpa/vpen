@@ -1,0 +1,7 @@
+*.exe
+*.dat
+*.ico
+/linux
+/macos
+/windows
+/quark

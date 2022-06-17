@@ -1,0 +1,31 @@
+html {
+  overflow: none;
+}
+
+body {
+  margin: 0;
+  background: lime;
+}
+
+img {
+  position: absolute;
+  background-image: var(bg-img, red);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: none;
+}
+
+#hand {
+  transform: translate(-150px, -300px);
+  width: 300px;
+  height: 400px;
+}
+
+#tablet {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 1000px;
+  height: 500px;
+}
