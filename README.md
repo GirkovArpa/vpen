@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://github.com/girkovarpa/vpen">
-    <img src="logo/128x128.png" alt="vPen"/>
+    <img src="logo.png" alt="vPen"/>
     <p>vPen</p>
   </a>
 </h1>
