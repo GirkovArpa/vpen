@@ -1,0 +1,112 @@
+@set content {
+  :root {
+    width: *;
+    height: *;
+    padding: 1em;
+    flow: vertical;
+    border-spacing: 0.5em;
+    position: relative;
+  }
+
+  [disabled=true] {
+    pointer-events: none;
+  }
+
+  #textures {
+    width: *;
+    height: *;
+
+    border: 1dip solid;
+    flow: table-fixed;
+    padding: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+    overflow-x: auto;
+  }
+
+  #textures > thead {
+    behavior: column-resizer;
+    width: *;
+  }
+
+  th.index,
+  th.size,
+  th.uncompressed-size {
+    text-align: center !important;
+  }
+
+  #textures > tbody {
+    behavior: select;
+    overflow-y: auto;
+    width: *;
+    height: *;
+  }
+
+  #textures th,
+  #textures td {
+    border: 1dip solid;
+    padding: 4dip;
+  }
+
+  tbody tr:checked {
+    background: highlight;
+    color: highlighttext;
+  }
+
+  /*#textures tr[role='option'] {
+    fill: gray;
+    stroke: gray;
+    foreground-image: url(path:M22 24h-20v-24h14l6 6v18zm-7-23h-12v22h18v-16h-6v-6zm1 5h4.586l-4.586-4.586v4.586z);
+    foreground-repeat: no-repeat;
+    foreground-position: 2dip 50%;
+    foreground-size: 16dip 16dip;
+    padding-left: 24dip;
+    padding-right: 4dip;
+    flow: horizontal;
+    width: *;
+  }*/
+
+  #textures tr {
+    white-space: nowrap;
+  }
+
+  #textures td {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    flow: text;
+  }
+
+  #textures [role='option'] > td.index {
+    text-align: center;
+  }
+
+  #textures td.size,
+  #textures td.uncompressed-size {
+    text-align: right;
+  }
+
+  progress {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 50%;
+    height: 40dip;
+  }
+
+  /*[dragTarget] [role='option']:hover {
+    background-color: red !important;
+  }
+
+  [role='option'] > td {
+    padding-top: 2dip !important;
+  }
+
+  [role='option']:hover.above > td,
+  [role='option']:hover.below + [role='option'] > td {
+    padding-top: 0dip !important;
+    border-top: 2dip solid highlight !important;
+  }*/
+}

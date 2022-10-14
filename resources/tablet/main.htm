@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>vPen — Tablet</title>
+    <link rel="stylesheet" href="main.css" />
+    <script type="module">
+      import { setUnhandledExceptionHandler } from '@debug';
+
+      setUnhandledExceptionHandler((err) => {
+        Window.this.modal(<warning caption="Unhandled Exception">{err.toString()}<br />{err.stack}</warning>);
+        console.error(err.toString() + '\r\n' + err.stack);
+      });
+
+      import { Application } from 'main.js';
+      document.body.patch(<Application />);
+
+      document.on('keydown', ({ code }) => {
+        code === 'F1' && Window.this.modal({ url: 'about/about.htm' });
+      });
+    </script>
+  </head>
+
+  <body></body>
+
+</html>

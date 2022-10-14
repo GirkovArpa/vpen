@@ -1,15 +1,101 @@
 <!DOCTYPE html>
-<html window-icon="logo/24x24.png">
-
+<html>
   <head>
-    <title>vPen — Hand</title>
-    <link rel="stylesheet" href="main.css" />
-    <script type="module" src="main.js"></script>
+    <style></style>
+    <script type="module">
+      import METADATA from 'metadata.js';
+      import { spawn, fs, exepath } from '@sys';
+
+      document.$('#run').on('click', () => {
+          const cmd = spawn([
+            'cmd.exe',
+            '/k',
+            'START',
+            '',
+            '/D',
+            'resources',
+            '/W',
+            'scapp.exe',
+            'main.htm',
+          ]);
+        });
+
+      document.$('#debug').on('click', () => {
+        const inspector = spawn([
+          'cmd.exe',
+          '/k',
+          'START',
+          '',
+          '/W',
+          'inspector.exe',
+        ]);
+
+        const cmd = spawn([
+          'cmd.exe',
+          '/k',
+          'START',
+          '',
+          '/D',
+          'resources',
+          '/W',
+          'scapp.exe',
+          'main.htm',
+          '--debug',
+        ]);
+      });
+
+      document.$('#package').on('click', async () => {
+        try {
+          await pkg();
+        } catch (e) {
+          Window.this.modal(<error caption="Error">{e}</error>);
+        }
+      });
+
+      async function pkg() {
+        const packfolder = spawn([
+          'packfolder.exe',
+          'resources',
+          `data.dat`,
+          '-binary',
+        ]);
+        await packfolder.wait();
+
+        const params = METADATA;
+        const dataFilename = `data.dat`;
+        const packageFilename = `packaged/${params.productName} ${params.productVersion}.exe`;
+
+        if (!fs.$stat('packaged')) {
+          await fs.mkdir('packaged');
+        }
+
+        await Window.this.scapp.assembleExe(
+          exepath(),
+          dataFilename,
+          packageFilename,
+          params
+        );
+
+        await fs.unlink(dataFilename);
+
+        Window.this.modal(
+          <info caption="Success">
+            Your program can be found in the folder named "packaged"!
+          </info>
+        );
+      }
+    </script>
   </head>
 
   <body>
-    <img #arm />
-    <img #hand />
+    <h1>Make sure "packfolder.exe" is here.</h1>
+    <h2>Also, make sure "inspector.exe" and "sciter.dll" are here.</h2>
+    <h3>
+      Then, edit "metadata.js", "icon.ico" and files in the "resources" folder
+      to customize your program.
+    </h3>
+    <button #run>Run</button>
+    <button #debug>Debug</button>
+    <button #package>Package</button>
   </body>
-
 </html>

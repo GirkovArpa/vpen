@@ -1,0 +1,88 @@
+html {
+  width: max-content;
+  height: min-content;
+  overflow: none;
+}
+
+@set about {
+  :root {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    flow: vertical;
+  }
+
+  #container {
+  }
+
+  #header {
+    padding: 1em;
+    horizontal-align: center;
+    image-rendering: optimize-quality;
+  }
+
+  #logo {
+    padding-bottom: 1em;
+    //behavior: shell-icon;
+    display: block;
+    size: 64dip;
+    foreground-size: 64dip 64dip;
+    min-height: 64dip;
+    min-width: 64dip;
+  }
+
+  #title {
+    text-align: center;
+  }
+
+  #title > div:first-child {
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+
+  #title > div:last-child {
+    opacity: 0.4;
+  }
+
+  #contents {
+    padding: 1em;
+    border-bottom: 1dip solid rgba(0, 0, 0, 0.2);
+    flow: vertical;
+    border-spacing: 3dip;
+    height: min-content;
+  }
+
+  .row {
+    white-space: nowrap;
+    margin: 0 auto;
+    width: max-content;
+    align-items: middle;
+    vertical-align: middle;
+    flow: horizontal;
+    text-align: center;
+    border-spacing: *;
+    //line-height: 1.6em;
+    //height: 1.6em;
+  }
+
+  .row img {
+    //transform: translate(0, 15%);
+  }
+
+  a:focus {
+    outline: 1dip solid cyan;
+  }
+
+  #footer {
+    flow: horizontal;
+    padding: 10dip;
+    margin: 0;
+    flow: horizontal;
+    horizontal-align: right;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  #ok {
+    width: 3em;
+  }
+}

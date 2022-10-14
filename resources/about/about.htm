@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html window-resizable="false">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>About</title>
+    <link href="about.css" rel="stylesheet" />
+    <script type="module">
+      import { About } from 'about.js';
+      Window.this.state = Window.WINDOW_HIDDEN;
+      document.body.patch(<About />);
+    </script>
+  </head>
+
+  <body></body>
+
+</html>
