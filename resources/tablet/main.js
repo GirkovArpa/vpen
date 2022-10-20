@@ -7,12 +7,12 @@ export class Application extends Element {
   constructor() {
     super();
     Window.this.on('size', () => {
-      const [width, height] = Window.this.screenBox('frame', 'dimension');
+      const [width, height] = Window.this.box('dimension', 'client');
       const window = { width, height };
       this.componentUpdate({ window });
     });
     Window.this.on('statechange', () => {
-      const [width, height] = Window.this.screenBox('frame', 'dimension');
+      const [width, height] = Window.this.box('dimension', 'client');
       const window = { width, height };
       this.componentUpdate({ window });
     });
@@ -34,7 +34,7 @@ export class Application extends Element {
   }
 
   getCursorPosition() {
-    const [x, y] = Window.this.box('position', 'cursor', 'desktop');
+    const [x, y] = Window.this.box('position', 'cursor', 'monitor');
     return { x, y };
   }
 
@@ -48,7 +48,7 @@ export class Application extends Element {
     this.$('#hand').style.top = top;
 
     let left = this.window.width - cursor.x;
-    left = scale(left, 0, this.window.width, 160, 860);
+    left = scale(left, 0, this.window.width, 40 + 130, 860 - 130);
 
     let adjustment = (40 * cursor.y) / this.window.height;
 
@@ -65,7 +65,7 @@ export class Application extends Element {
     this.$('#hand').style.left = left;
 
     let rotation = 15 * (1 - cursor.x / this.window.width);
-    this.$('#hand').style.transform = `translate(-150px, -300px) rotate(${rotation}deg)`;
+    this.$('#hand').style.transform = `translate(0, -300px) rotate(${rotation}deg)`;
   }
 
   render() {
