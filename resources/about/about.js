@@ -30,7 +30,7 @@ export class About extends Element {
             <icon id="logo" icon-size="xx-large" filename={exepath()} />
             <div id="title">
               <div>vPen</div>
-              <div>v1.0.0</div>
+              <div>v1.0.1</div>
             </div>
           </div>
           <div id="contents">
